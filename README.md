@@ -1,5 +1,6 @@
+# Observability project for Mendix 
 
-## Deploying App Mendix for example
+## Deploying App Demo Mendix
 
 ```
 $ kubectl apply -f mendix/
