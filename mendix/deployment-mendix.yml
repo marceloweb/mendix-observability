@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mendix-deployment
+spec:
+  selector:
+    matchLabels:
+      name: mendix-pod
+  template:
+    metadata:
+      labels:
+        name: mendix-pod
+    spec:
+      containers:
+      - name: mendix-container
+        image: marceloweb/demo-app-mendix:v3.4.0
+        ports:
+          - containerPort: 8080
+        env:
+         - name: MXRUNTIME_DatabaseType
+           value: MySql
+         - name: MXRUNTIME_DatabaseUserName
+           value: jupiter
+         - name: MXRUNTIME_DatabasePassword
+           value: Marcelo#123
+         - name: MXRUNTIME_DatabaseHost
+           value: 143.198.57.236
+         - name: MXRUNTIME_DatabaseName
+           value: mendix
+         - name: ADMIN_PASSWORD
+           value: Password1!Ba
