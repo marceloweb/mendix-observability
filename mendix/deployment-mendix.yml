@@ -13,19 +13,22 @@ spec:
     spec:
       containers:
       - name: mendix-container
-        image: marceloweb/demo-app-mendix:v3.4.0
+        image: marceloweb/demo-app-mendix:v3.4.1
         ports:
           - containerPort: 8080
+          - containerPort: 6831
+            protocol: UDP
+        args: ["--collector.host-port=jaeger-collector:14267"]
         env:
          - name: MXRUNTIME_DatabaseType
-           value: MySql
+           value: ${MXRUNTIME_DatabaseType}
          - name: MXRUNTIME_DatabaseUserName
-           value: jupiter
+           value: ${MXRUNTIME_DatabaseUserName}
          - name: MXRUNTIME_DatabasePassword
-           value: Marcelo#123
+           value: ${MXRUNTIME_DatabasePassword}
          - name: MXRUNTIME_DatabaseHost
-           value: 143.198.57.236
+           value: ${MXRUNTIME_DatabaseHost}
          - name: MXRUNTIME_DatabaseName
-           value: mendix
+           value: ${MXRUNTIME_DatabaseName}
          - name: ADMIN_PASSWORD
-           value: Password1!Ba
+           value: ${ADMIN_PASSWORD}
